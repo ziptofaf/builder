@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Drives</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Link</th>
+      <th>Dollar price</th>
+      <th>Euro price</th>
+      <th>Capacity</th>
+      <th>Performance</th>
+      <th>Disk type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @drives.each do |drife| %>
+      <tr>
+        <td><%= drife.name %></td>
+        <td><%= drife.link %></td>
+        <td><%= drife.dollar_price %></td>
+        <td><%= drife.euro_price %></td>
+        <td><%= drife.capacity %></td>
+        <td><%= drife.performance %></td>
+        <td><%= drife.disk_type %></td>
+        <td><%= link_to 'Show', drife %></td>
+        <td><%= link_to 'Edit', edit_drife_path(drife) %></td>
+        <td><%= link_to 'Destroy', drife, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Drive', new_drife_path %>

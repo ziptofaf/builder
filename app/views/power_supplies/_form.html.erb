@@ -1,0 +1,41 @@
+<%= form_for(@power_supply) do |f| %>
+  <% if @power_supply.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@power_supply.errors.count, "error") %> prohibited this power_supply from being saved:</h2>
+
+      <ul>
+      <% @power_supply.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :link %><br>
+    <%= f.text_field :link %>
+  </div>
+  <div class="field">
+    <%= f.label :dollar_price %><br>
+    <%= f.text_field :dollar_price %>
+  </div>
+  <div class="field">
+    <%= f.label :euro_price %><br>
+    <%= f.text_field :euro_price %>
+  </div>
+  <div class="field">
+    <%= f.label :power %><br>
+    <%= f.number_field :power %>
+  </div>
+  <div class="field">
+    <%= f.label :performance %><br>
+    <%= f.number_field :performance %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

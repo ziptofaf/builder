@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Graphics</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Link</th>
+      <th>Size</th>
+      <th>Dollar price</th>
+      <th>Euro price</th>
+      <th>Cpu average</th>
+      <th>Performance</th>
+      <th>Power</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @graphics.each do |graphic| %>
+      <tr>
+        <td><%= graphic.name %></td>
+        <td><%= graphic.link %></td>
+        <td><%= graphic.size %></td>
+        <td><%= graphic.dollar_price %></td>
+        <td><%= graphic.euro_price %></td>
+        <td><%= graphic.cpu_average %></td>
+        <td><%= graphic.performance %></td>
+        <td><%= graphic.power %></td>
+        <td><%= link_to 'Show', graphic %></td>
+        <td><%= link_to 'Edit', edit_graphic_path(graphic) %></td>
+        <td><%= link_to 'Destroy', graphic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Graphic', new_graphic_path %>

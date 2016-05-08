@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @processor.name %>
+</p>
+
+<p>
+  <strong>Single:</strong>
+  <%= @processor.single %>
+</p>
+
+<p>
+  <strong>Multi:</strong>
+  <%= @processor.multi %>
+</p>
+
+<p>
+  <strong>Average:</strong>
+  <%= @processor.average %>
+</p>
+
+<p>
+  <strong>Platform:</strong>
+  <%= @processor.platform %>
+</p>
+
+<p>
+  <strong>Igpu:</strong>
+  <%= @processor.iGPU %>
+</p>
+
+<p>
+  <strong>Oc:</strong>
+  <%= @processor.OC %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @processor.link %>
+</p>
+
+<p>
+  <strong>Power:</strong>
+  <%= @processor.power %>
+</p>
+
+<p>
+  <strong>Dollar price:</strong>
+  <%= @processor.dollar_price %>
+</p>
+
+<p>
+  <strong>Euro price:</strong>
+  <%= @processor.euro_price %>
+</p>
+
+<%= link_to 'Edit', edit_processor_path(@processor) %> |
+<%= link_to 'Back', processors_path %>

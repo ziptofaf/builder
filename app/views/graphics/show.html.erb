@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @graphic.name %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @graphic.link %>
+</p>
+
+<p>
+  <strong>Size:</strong>
+  <%= @graphic.size %>
+</p>
+
+<p>
+  <strong>Dollar price:</strong>
+  <%= @graphic.dollar_price %>
+</p>
+
+<p>
+  <strong>Euro price:</strong>
+  <%= @graphic.euro_price %>
+</p>
+
+<p>
+  <strong>Cpu average:</strong>
+  <%= @graphic.cpu_average %>
+</p>
+
+<p>
+  <strong>Performance:</strong>
+  <%= @graphic.performance %>
+</p>
+
+<p>
+  <strong>Power:</strong>
+  <%= @graphic.power %>
+</p>
+
+<%= link_to 'Edit', edit_graphic_path(@graphic) %> |
+<%= link_to 'Back', graphics_path %>

@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  single: 9.99
+  multi: 9.99
+  average: 9.99
+  platform_id: 
+  iGPU: 1
+  OC: 9.99
+  link: MyString
+  power: 1
+  dollar_price: 9.99
+  euro_price: 9.99
+
+two:
+  name: MyString
+  single: 9.99
+  multi: 9.99
+  average: 9.99
+  platform_id: 
+  iGPU: 1
+  OC: 9.99
+  link: MyString
+  power: 1
+  dollar_price: 9.99
+  euro_price: 9.99

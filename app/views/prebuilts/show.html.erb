@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @prebuilt.price %>
+</p>
+
+<p>
+  <strong>Partlist:</strong>
+  <%= @prebuilt.partlist %>
+</p>
+
+<p>
+  <strong>Performance:</strong>
+  <%= @prebuilt.performance %>
+</p>
+
+<p>
+  <strong>Type build:</strong>
+  <%= @prebuilt.type_build %>
+</p>
+
+<%= link_to 'Edit', edit_prebuilt_path(@prebuilt) %> |
+<%= link_to 'Back', prebuilts_path %>

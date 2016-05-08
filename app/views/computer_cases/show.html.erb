@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @computer_case.name %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @computer_case.link %>
+</p>
+
+<p>
+  <strong>Dollar price:</strong>
+  <%= @computer_case.dollar_price %>
+</p>
+
+<p>
+  <strong>Euro price:</strong>
+  <%= @computer_case.euro_price %>
+</p>
+
+<p>
+  <strong>Size:</strong>
+  <%= @computer_case.size %>
+</p>
+
+<p>
+  <strong>Performance:</strong>
+  <%= @computer_case.performance %>
+</p>
+
+<%= link_to 'Edit', edit_computer_case_path(@computer_case) %> |
+<%= link_to 'Back', computer_cases_path %>

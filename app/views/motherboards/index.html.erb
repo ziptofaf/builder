@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Motherboards</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Platform</th>
+      <th>Link</th>
+      <th>Size</th>
+      <th>Oc</th>
+      <th>Ram type</th>
+      <th>Ram slots</th>
+      <th>Dollar price</th>
+      <th>Euro price</th>
+      <th>Score</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @motherboards.each do |motherboard| %>
+      <tr>
+        <td><%= motherboard.name %></td>
+        <td><%= motherboard.platform %></td>
+        <td><%= motherboard.link %></td>
+        <td><%= motherboard.size %></td>
+        <td><%= motherboard.OC %></td>
+        <td><%= motherboard.memory %></td>
+        <td><%= motherboard.ram_slots %></td>
+        <td><%= motherboard.dollar_price %></td>
+        <td><%= motherboard.euro_price %></td>
+        <td><%= motherboard.score %></td>
+        <td><%= link_to 'Show', motherboard %></td>
+        <td><%= link_to 'Edit', edit_motherboard_path(motherboard) %></td>
+        <td><%= link_to 'Destroy', motherboard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Motherboard', new_motherboard_path %>

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  platform_id: 
+  link: MyString
+  size: 1
+  OC: 9.99
+  ram_slots: 1
+  dollar_price: 9.99
+  euro_price: 9.99
+  score: 1
+
+two:
+  name: MyString
+  platform_id: 
+  link: MyString
+  size: 1
+  OC: 9.99
+  ram_slots: 1
+  dollar_price: 9.99
+  euro_price: 9.99
+  score: 1

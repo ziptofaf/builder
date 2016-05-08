@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @motherboard.name %>
+</p>
+
+<p>
+  <strong>Platform:</strong>
+  <%= @motherboard.platform %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @motherboard.link %>
+</p>
+
+<p>
+  <strong>Size:</strong>
+  <%= @motherboard.size %>
+</p>
+
+<p>
+  <strong>Oc:</strong>
+  <%= @motherboard.OC %>
+</p>
+
+<p>
+  <strong>Ram slots:</strong>
+  <%= @motherboard.ram_slots %>
+</p>
+
+<p>
+  <strong>Dollar price:</strong>
+  <%= @motherboard.dollar_price %>
+</p>
+
+<p>
+  <strong>Euro price:</strong>
+  <%= @motherboard.euro_price %>
+</p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @motherboard.score %>
+</p>
+
+<%= link_to 'Edit', edit_motherboard_path(@motherboard) %> |
+<%= link_to 'Back', motherboards_path %>

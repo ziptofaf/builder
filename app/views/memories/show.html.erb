@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ram type:</strong>
+  <%= @memory.ram_type %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @memory.name %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @memory.link %>
+</p>
+
+<p>
+  <strong>Dollar price:</strong>
+  <%= @memory.dollar_price %>
+</p>
+
+<p>
+  <strong>Euro price:</strong>
+  <%= @memory.euro_price %>
+</p>
+
+<p>
+  <strong>Sticks:</strong>
+  <%= @memory.sticks %>
+</p>
+
+<p>
+  <strong>Capacity:</strong>
+  <%= @memory.capacity %>
+</p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @memory.score %>
+</p>
+
+<%= link_to 'Edit', edit_memory_path(@memory) %> |
+<%= link_to 'Back', memories_path %>

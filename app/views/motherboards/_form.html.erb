@@ -1,0 +1,57 @@
+<%= form_for(@motherboard) do |f| %>
+  <% if @motherboard.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@motherboard.errors.count, "error") %> prohibited this motherboard from being saved:</h2>
+
+      <ul>
+      <% @motherboard.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :platform_id %><br>
+    <%= f.text_field :platform_id %>
+  </div>
+  <div class="field">
+    <%= f.label :link %><br>
+    <%= f.text_field :link %>
+  </div>
+  <div class="field">
+    <%= f.label :size %><br>
+    <%= f.number_field :size %>
+  </div>
+  <div class="field">
+    <%= f.label :OC %><br>
+    <%= f.text_field :OC %>
+  </div>
+  <div class="field">
+    <%= f.label :memory %><br>
+    <%= f.number_field :memory %>
+  </div>
+  <div class="field">
+    <%= f.label :ram_slots %><br>
+    <%= f.number_field :ram_slots %>
+  </div>
+  <div class="field">
+    <%= f.label :dollar_price %><br>
+    <%= f.text_field :dollar_price %>
+  </div>
+  <div class="field">
+    <%= f.label :euro_price %><br>
+    <%= f.text_field :euro_price %>
+  </div>
+  <div class="field">
+    <%= f.label :score %><br>
+    <%= f.number_field :score %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

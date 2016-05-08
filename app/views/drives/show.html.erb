@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @drife.name %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @drife.link %>
+</p>
+
+<p>
+  <strong>Dollar price:</strong>
+  <%= @drife.dollar_price %>
+</p>
+
+<p>
+  <strong>Euro price:</strong>
+  <%= @drife.euro_price %>
+</p>
+
+<p>
+  <strong>Capacity:</strong>
+  <%= @drife.capacity %>
+</p>
+
+<p>
+  <strong>Performance:</strong>
+  <%= @drife.performance %>
+</p>
+
+<p>
+  <strong>Disk type:</strong>
+  <%= @drife.disk_type %>
+</p>
+
+<%= link_to 'Edit', edit_drife_path(@drife) %> |
+<%= link_to 'Back', drives_path %>

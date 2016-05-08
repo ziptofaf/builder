@@ -1,0 +1,33 @@
+<%= form_for(@prebuilt) do |f| %>
+  <% if @prebuilt.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@prebuilt.errors.count, "error") %> prohibited this prebuilt from being saved:</h2>
+
+      <ul>
+      <% @prebuilt.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :partlist %><br>
+    <%= f.text_field :partlist %>
+  </div>
+  <div class="field">
+    <%= f.label :performance %><br>
+    <%= f.text_field :performance %>
+  </div>
+  <div class="field">
+    <%= f.label :type_build %><br>
+    <%= f.number_field :type_build %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

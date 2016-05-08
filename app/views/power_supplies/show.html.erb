@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @power_supply.name %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @power_supply.link %>
+</p>
+
+<p>
+  <strong>Dollar price:</strong>
+  <%= @power_supply.dollar_price %>
+</p>
+
+<p>
+  <strong>Euro price:</strong>
+  <%= @power_supply.euro_price %>
+</p>
+
+<p>
+  <strong>Power:</strong>
+  <%= @power_supply.power %>
+</p>
+
+<p>
+  <strong>Performance:</strong>
+  <%= @power_supply.performance %>
+</p>
+
+<%= link_to 'Edit', edit_power_supply_path(@power_supply) %> |
+<%= link_to 'Back', power_supplies_path %>
