@@ -72,7 +72,7 @@ module MakerHelper
     resultingpc.push(prebuilt.price.to_f.round(2))
     return resultingpc
   end
-  def BuildAStandardPCInDollars(budget, size=3)
+  def buildAStandardPCInDollars(budget, size=3)
     build = [0,0,0,0,0,0,0,0,0]
     prebuilt = Prebuilt.where("type_build = ? and size = ? and price between ? and ?", 1, size, budget-20, budget).order(price: :desc).first
     if (prebuilt)
@@ -121,7 +121,7 @@ module MakerHelper
                 computerCases.each do |pc_case|
                   budget7 = budget6-pc_case.dollar_price
                   next if budget7 < 0
-                  performance = 5*cpu.average + 3* mobo.score + 10 * gpu.performance + 3* ram.score + 2* pc_case.performance + 3 * drive.performance + 5*psu.performance
+                  performance = 6*cpu.average + 2* mobo.score + 9 * gpu.performance + 3* ram.score + 2* pc_case.performance + 3 * drive.performance + 5*psu.performance
                   if performance > build[7]
                     build[0]=cpu.id
                     build[1]=mobo.id
@@ -140,11 +140,13 @@ module MakerHelper
         end
       end
     end
-    prebuilt.price = build[8]
-    prebuilt.performance=build[7]
-    prebuilt.partlist = "#{build[0]},#{build[1]},#{build[2]},#{build[3]},#{build[4]},#{build[5]},#{build[6]}"
-    prebuilt.updated_at=Time.now #this line is hopefully useless but it seems that there were some weird issues when i removed it in dev environment
-    prebuilt.save
+    unless build[0]==0
+      prebuilt.price = build[8]
+      prebuilt.performance=build[7]
+      prebuilt.partlist = "#{build[0]},#{build[1]},#{build[2]},#{build[3]},#{build[4]},#{build[5]},#{build[6]}"
+      prebuilt.updated_at=Time.now #this line is hopefully useless but it seems that there were some weird issues when i removed it in dev environment
+      prebuilt.save
+    end
     return build
   end
 

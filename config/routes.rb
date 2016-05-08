@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  get 'motherboards/new_by_spread'
+  post 'motherboards/create_by_spread'
+  get 'motherboards/multiple_new_by_spread'
+  post 'motherboards/multiple_create_by_spread'
+
   resources :prebuilts
   resources :computer_cases
   get 'admin/list'
@@ -7,16 +13,12 @@ Rails.application.routes.draw do
   resources :drives
   resources :power_supplies
   resources :memories
-  resources :memories
   resources :graphics
   resources :motherboards
   resources :processors
-  resources :processors
-  resources :processors
-  resources :processors
-  resources :processors
   resources :platforms
   get 'maker/build'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
