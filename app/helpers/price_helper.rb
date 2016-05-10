@@ -3,8 +3,12 @@ require 'mechanize'
 
 def getPrice
   if self.link.empty?
-  self.dollar_price = -1.00
-  self.euro_price = -1.00
+    if self.dollar_price.nil?
+      self.dollar_price = -1.00
+      self.euro_price = -1.00
+    else
+      return
+    end
   else
     prices = fetchPrices(self.link.dup)
     self.dollar_price = prices[0]
@@ -12,7 +16,9 @@ def getPrice
   end
 end
 
+
   def fetchPrices(address)
+    sleep(1.0) #i dont want to abuse pcpartpicker
     agent = Mechanize.new
     begin
       page = agent.get(address)

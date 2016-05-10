@@ -1,10 +1,10 @@
 class Processor < ActiveRecord::Base
   include PriceHelper
   belongs_to :platform
-  before_save :calculateAverage, :getPrice
+  before_save :calculateAverage#, :getPrice
 
   def calculateAverage
-    self.average = (self.single + self.multi) / 2
+    self.average = 0.46 * self.single + 0.54 * self.multi
   end
 
 

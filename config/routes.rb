@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'graphics/new_by_spread'
+  post 'graphics/create_by_spread'
   get 'motherboards/new_by_spread'
   post 'motherboards/create_by_spread'
   get 'motherboards/multiple_new_by_spread'

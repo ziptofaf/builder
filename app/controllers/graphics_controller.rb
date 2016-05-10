@@ -61,6 +61,32 @@ class GraphicsController < ApplicationController
     end
   end
 
+  def new_by_spread
+  end
+  def create_by_spread
+    if graphic_params[:spreadsheet].empty?
+      redirect_to graphics_path, notice: 'Invalid input.'
+      return
+    end
+    entries = graphic_params[:spreadsheet].split(/\n/)
+    entries.each do |row|
+      gpu = Graphic.new
+      entry = row.split(';')
+      gpu.name = entry[0]
+      gpu.power = entry[1]
+      gpu.performance = entry[2]
+      gpu.link = entry[5]
+      gpu.size = entry[6]
+      gpu.cpu_average = entry[7]
+      sleep(1)
+      gpu.save
+    end
+
+    redirect_to graphics_path, notice: 'Records saved.'
+    return
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_graphic
@@ -69,6 +95,6 @@ class GraphicsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def graphic_params
-      params.require(:graphic).permit(:name, :link, :size, :dollar_price, :euro_price, :cpu_average, :performance, :power)
+      params.require(:graphic).permit(:name, :link, :size, :dollar_price, :euro_price, :cpu_average, :performance, :power, :spreadsheet)
     end
 end
