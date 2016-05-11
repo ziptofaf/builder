@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-
+  get 'memories/new_by_spread'
+  post 'memories/create_by_spread'
+  get 'drives/new_by_spread'
+  post 'drives/create_by_spread'
   get 'graphics/new_by_spread'
   post 'graphics/create_by_spread'
   get 'motherboards/new_by_spread'

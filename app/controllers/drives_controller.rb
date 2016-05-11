@@ -1,5 +1,5 @@
 class DrivesController < ApplicationController
-  before_action :set_drife, only: [:show, :edit, :update, :destroy]
+  before_action :set_drive, only: [:show, :edit, :update, :destroy]
 
   # GET /drives
   # GET /drives.json
@@ -14,7 +14,7 @@ class DrivesController < ApplicationController
 
   # GET /drives/new
   def new
-    @drife = Drive.new
+    @drive = Drive.new
   end
 
   # GET /drives/1/edit
@@ -24,15 +24,15 @@ class DrivesController < ApplicationController
   # POST /drives
   # POST /drives.json
   def create
-    @drife = Drive.new(drife_params)
+    @drive = Drive.new(drive_params)
 
     respond_to do |format|
-      if @drife.save
-        format.html { redirect_to @drife, notice: 'Drive was successfully created.' }
-        format.json { render :show, status: :created, location: @drife }
+      if @drive.save
+        format.html { redirect_to @drive, notice: 'Drive was successfully created.' }
+        format.json { render :show, status: :created, location: @drive }
       else
         format.html { render :new }
-        format.json { render json: @drife.errors, status: :unprocessable_entity }
+        format.json { render json: @drive.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -41,20 +41,44 @@ class DrivesController < ApplicationController
   # PATCH/PUT /drives/1.json
   def update
     respond_to do |format|
-      if @drife.update(drife_params)
-        format.html { redirect_to @drife, notice: 'Drive was successfully updated.' }
-        format.json { render :show, status: :ok, location: @drife }
+      if @drive.update(drive_params)
+        format.html { redirect_to @drive, notice: 'Drive was successfully updated.' }
+        format.json { render :show, status: :ok, location: @drive }
       else
         format.html { render :edit }
-        format.json { render json: @drife.errors, status: :unprocessable_entity }
+        format.json { render json: @drive.errors, status: :unprocessable_entity }
       end
     end
   end
 
+  def new_by_spread
+  end
+
+  def create_by_spread
+    if drive_params[:spreadsheet].empty?
+      redirect_to drives_path, notice: 'Invalid input.'
+      return
+    end
+    entries = drive_params[:spreadsheet].split(/\n/)
+    entries.each do |row|
+      drive = Drive.new
+      entry = row.split(';')
+      drive.name = entry[0]
+      drive.capacity = entry[1]
+      drive.disk_type = entry[2]
+      drive.performance = entry[3]
+      drive.link = entry[6]
+      drive.save
+    end
+    redirect_to drives_path, notice: 'Records saved.'
+
+  end
+
+
   # DELETE /drives/1
   # DELETE /drives/1.json
   def destroy
-    @drife.destroy
+    @drive.destroy
     respond_to do |format|
       format.html { redirect_to drives_url, notice: 'Drive was successfully destroyed.' }
       format.json { head :no_content }
@@ -63,12 +87,12 @@ class DrivesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_drife
-      @drife = Drive.find(params[:id])
+    def set_drive
+      @drive = Drive.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def drife_params
-      params.require(:drive).permit(:name, :link, :dollar_price, :euro_price, :capacity, :performance, :disk_type)
+    def drive_params
+      params.require(:drive).permit(:name, :link, :dollar_price, :euro_price, :capacity, :performance, :disk_type, :spreadsheet)
     end
 end

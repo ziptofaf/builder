@@ -1,4 +1,4 @@
 class Graphic < ActiveRecord::Base
   include PriceHelper
-  #before_save :getPrice
+  before_save :getPrice
 end

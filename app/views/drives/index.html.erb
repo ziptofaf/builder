@@ -17,18 +17,18 @@
   </thead>
 
   <tbody>
-    <% @drives.each do |drife| %>
+    <% @drives.each do |drive| %>
       <tr>
-        <td><%= drife.name %></td>
-        <td><%= drife.link %></td>
-        <td><%= drife.dollar_price %></td>
-        <td><%= drife.euro_price %></td>
-        <td><%= drife.capacity %></td>
-        <td><%= drife.performance %></td>
-        <td><%= drife.disk_type %></td>
-        <td><%= link_to 'Show', drife %></td>
-        <td><%= link_to 'Edit', edit_drife_path(drife) %></td>
-        <td><%= link_to 'Destroy', drife, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= drive.name %></td>
+        <td><%= drive.link %></td>
+        <td><%= drive.dollar_price %></td>
+        <td><%= drive.euro_price %></td>
+        <td><%= drive.capacity %></td>
+        <td><%= drive.performance %></td>
+        <td><%= drive.disk_type %></td>
+        <td><%= link_to 'Show', drive %></td>
+        <td><%= link_to 'Edit', edit_drife_path(drive) %></td>
+        <td><%= link_to 'Destroy', drive, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -37,3 +37,4 @@
 <br>
 
 <%= link_to 'New Drive', new_drife_path %>
+<%= link_to 'Import from csv file', drives_new_by_spread_path %>

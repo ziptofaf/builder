@@ -1,0 +1,6 @@
+<%= form_for :drive, :url => drives_create_by_spread_path do |f| %>
+<%= f.label :spreadsheet %>
+<%= f.text_area :spreadsheet, cols: "100", rows: "30" %>
+<br>
+<%= f.submit %>
+<% end %>

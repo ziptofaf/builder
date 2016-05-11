@@ -18,7 +18,7 @@ end
 
 
   def fetchPrices(address)
-    sleep(1.0) #i dont want to abuse pcpartpicker
+    sleep(1.5) #i dont want to abuse pcpartpicker
     agent = Mechanize.new
     begin
       page = agent.get(address)

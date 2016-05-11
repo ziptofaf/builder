@@ -61,6 +61,31 @@ class MemoriesController < ApplicationController
     end
   end
 
+    def new_by_spread
+    end
+
+    def create_by_spread
+      if memory_params[:spreadsheet].empty?
+        redirect_to memories_path, notice: 'Invalid input.'
+        return
+      end
+      entries = memory_params[:spreadsheet].split(/\n/)
+      entries.each do |row|
+        mem = Memory.new
+        entry = row.split(';')
+        mem.name = entry[0]
+        mem.ram_type = entry[1]
+        mem.link = entry[2]
+        mem.sticks = entry[5]
+        mem.capacity = entry[6]
+        mem.score = entry[7]
+        mem.save
+      end
+
+      redirect_to  memories_path, notice: 'Records saved.'
+      return
+    end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_memory
@@ -69,6 +94,6 @@ class MemoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def memory_params
-      params.require(:memory).permit(:ram_type, :name, :link, :dollar_price, :euro_price, :sticks, :capacity, :score)
+      params.require(:memory).permit(:ram_type, :name, :link, :dollar_price, :euro_price, :sticks, :capacity, :score, :spreadsheet)
     end
 end

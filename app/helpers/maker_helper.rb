@@ -13,6 +13,10 @@ module MakerHelper
   # makes whole thing way more readable
 
   def arrayToTextPC(array)
+    if array[0]==0
+      puts "Something went wrong. Maybe you entered budget that is too low?"
+      return
+    end
     cpu = Processor.find(array[0])
     mobo = Motherboard.find(array[1])
     gpu = Graphic.find(array[2])
@@ -92,28 +96,79 @@ module MakerHelper
     resultingpc.push(prebuilt.price.to_f.round(2))
     return resultingpc
   end
-  def fetchAllParts(budget, currency=DOLLAR, size = ATX)
+  def fetchAllParts(budget, currency=DOLLAR, size = ATX, type = GAMING)
+    amd_apu = Platform.find_by name: "FM2+"
+    intel_enthusiast = Platform.find_by name: "X99"
+    intel_1151 = Platform.find_by name: "1151"
+    intel_1151_oc = Platform.find_by name: "1151OC"
     if currency == DOLLAR
-      cpus = Processor.where("dollar_price > ? and dollar_price < ?", 0.15 * budget, 0.65 * budget).to_a
-      mobos = Motherboard.where("dollar_price > 0 and size<=? and dollar_price < ?", size, 0.4 * budget).to_a
-      if size==MINIITX
-        gpus = Graphic.where("size<=? and (dollar_price between ? and ? or dollar_price = 0)", size, 0, 0.75 * budget).to_a
-      else
-        gpus = Graphic.where("size<=? and (dollar_price between ? and ? or dollar_price = 0)", size, 0.3 * budget, 0.75 * budget).to_a
-      end
-      rams = Memory.where("dollar_price between ? and ?", 0, 0.35 * budget).to_a
-      drives = Drive.where("dollar_price between ? and ?", 0, 0.35 * budget).to_a
-      psus = PowerSupply.where("dollar_price between ? and ?", 0, 0.45 * budget).to_a
-      cases = ComputerCase.where("dollar_price between ? and ?", 0, 0.30 * budget).to_a
-
+      query = "dollar_price"
     else
-      cpus = Processor.where("euro_price > ? and euro_price < ?", 0.15 * budget, 0.65 * budget).to_a
-      mobos = Motherboard.where("euro_price > 0 and size<=? and euro_price < ?", size, 0.4 * budget).to_a
-      gpus = Graphic.where("size<=? and (euro_price between ? and ? or euro_price = 0)", size, 0.3 * budget, 0.75 * budget).to_a
-      rams = Memory.where("euro_price between ? and ?", 0, 0.35 * budget).to_a
-      drives = Drive.where("euro_price between ? and ?", 0, 0.35 * budget).to_a
-      psus = PowerSupply.where("euro_price between ? and ?", 0, 0.45 * budget).to_a
-      cases = ComputerCase.where("euro_price between ? and ?", 0, 0.30 * budget).to_a
+      query = "euro_price"
+    end
+    case budget
+      when 0..170
+        raise InsufficientBudgetException
+      when 171..325
+        cpus = Processor.where("#{query} > ? and #{query} < ? and (platform_id = #{amd_apu.id} or platform_id = #{intel_1151.id}) ", 0, 100).to_a
+        mobos = Motherboard.where("#{query} > 0 and size<=? and #{query} < ? and (platform_id = #{amd_apu.id} or platform_id = #{intel_1151.id})", size, 65).to_a
+        gpus = Graphic.where("size<=? and (#{query} between ? and ? or #{query} = 0)", size, 0, 150).to_a
+        rams = Memory.where("#{query} between ? and ?", 0, 70).to_a
+        drives = Drive.where("#{query} between ? and ?", 0, 65).to_a
+        psus = PowerSupply.where("#{query} between ? and ?", 20, 50).to_a
+        cases = ComputerCase.where("#{query} between ? and ?", 0, 40).to_a
+      when 326..600
+        if type == GAMING
+          cpus = Processor.where("#{query} > ? and #{query} < ? and platform_id = #{intel_1151.id}", 55, 225).to_a #
+          gpus = Graphic.where("size<=? and (#{query} between ? and ? or #{query} = 0)", size, 80, 250).to_a
+        else
+          cpus = Processor.where("#{query} > ? and #{query} < ? and platform_id = #{intel_1151.id}", 80, 300).to_a
+          gpus = Graphic.where("size<=? and (#{query} between ? and ? or #{query} = 0)", size, 60, 220).to_a
+        end
+        mobos = Motherboard.where("#{query} > 0 and size<=? and #{query} < ? and platform_id = #{intel_1151.id}", size, 90).to_a
+        rams = Memory.where("#{query} between ? and ? and ram_type = 2", 0, 80).to_a
+        drives = Drive.where("#{query} between ? and ?", 0, 110).to_a
+        psus = PowerSupply.where("#{query} between ? and ?", 40, 100).to_a
+        cases = ComputerCase.where("#{query} between ? and ?", 0, 65).to_a
+
+      when 601..900
+        if type == GAMING
+          cpus = Processor.where("#{query} > ? and #{query} < ?", 105, 270).to_a
+          gpus = Graphic.where("size<=? and (#{query} between ? and ? or #{query} = 0)", size, 128, 370).to_a
+        else
+          cpus = Processor.where("#{query} > ? and #{query} < ?", 130, 315).to_a
+          gpus = Graphic.where("size<=? and (#{query} between ? and ? or #{query} = 0)", size, 90, 340).to_a
+        end
+        mobos = Motherboard.where("#{query} > 0 and size<=? and #{query} < ? and platform_id > #{amd_apu.id}", size, 150).to_a
+        rams = Memory.where("#{query} between ? and ? and ram_type = 2", 30, 105).to_a
+        drives = Drive.where("#{query} between ? and ?", 20, 110).to_a
+        psus = PowerSupply.where("#{query} between ? and ?", 60, 140).to_a
+        cases = ComputerCase.where("#{query} between ? and ?", 0, 65).to_a
+
+      when 901..1300
+        if type == GAMING
+          cpus = Processor.where("#{query} > ? and #{query} < ?", 175, 400).to_a
+          gpus = Graphic.where("size<=? and (#{query} between ? and ? or #{query} = 0)", size, 200, 640).to_a
+        else
+          cpus = Processor.where("#{query} > ? and #{query} < ?", 220, 500).to_a
+          gpus = Graphic.where("size<=? and (#{query} between ? and ? or #{query} = 0)", size, 170, 550).to_a
+        end
+        mobos = Motherboard.where("#{query} > ? and size<=? and #{query} < ? and (platform_id = #{intel_1151.id} or platform_id = #{intel_1151_oc.id} or platform_id = #{intel_enthusiast.id})", 60, size, 230).to_a
+        rams = Memory.where("#{query} between ? and ? and ram_type = 2", 24, 125).to_a
+        drives = Drive.where("#{query} between ? and ?", 35, 150).to_a
+        psus = PowerSupply.where("#{query} between ? and ?", 65, 170).to_a
+        cases = ComputerCase.where("#{query} between ? and ?", 10, 100).to_a
+
+      else
+        cpus = Processor.where("average >= ? and (platform_id = #{intel_1151_oc.id} or platform_id= #{intel_enthusiast.id})", 70).to_a
+        mobos = Motherboard.where("size<=? and score >= ?", size, 50).to_a
+        gpus = Graphic.where("size<=? and performance >= ?", size, 65).to_a
+        rams = Memory.where("score >= ? and ram_type = 2", 50).to_a
+        drives = Drive.where("performance >= ?", 70).to_a
+        psus = PowerSupply.where("performance >= ?", 70).to_a
+        cases = ComputerCase.where("#{query} between ? and ?", 20, 400).to_a
+
+
     end
 
     return {:cpus => cpus, :mobos => mobos, :gpus=> gpus, :rams=>rams, :drives=>drives, :psus=>psus, :cases=>cases}#,coolers]
@@ -132,7 +187,7 @@ module MakerHelper
     end
 
     if type <= WORKSTATION
-      prebuilt = Prebuilt.where("type_build = ? and size = ? and price between ? and ? and currency = ?", type, size, budget-20, budget, currency).order(price: :desc).first
+      prebuilt = Prebuilt.where("type_build = ? and size = ? and price between ? and ? and currency = ?", type, size, budget-35, budget, currency).order(price: :desc).first
       if (prebuilt)
         if (Time.now - prebuilt.updated_at < 2.days)
           return prebuiltToArray(prebuilt)
@@ -144,28 +199,37 @@ module MakerHelper
         prebuilt.size = size
       end
     end
-    if (currency==1) #for dollars
-      local_db = fetchAllParts(budget, DOLLAR, size)
+      begin
+      local_db = fetchAllParts(budget, currency, size, type)
+      rescue
+        return build
+      end
       #and now the gigamethod
+      if currency == DOLLAR
+        query = "dollar_price"
+      else
+        query = "euro_price"
+      end
       local_db[:cpus].each do |cpu|
-      budget1 = budget-cpu.dollar_price
+
+      budget1 = eval "budget-cpu.#{query}"
       next if budget1<0
 
       findCompatibleMobos(local_db[:mobos], cpu.platform_id).each do |mobo|
-        budget2 = budget1 - mobo.dollar_price
+        budget2 = eval "budget1-mobo.#{query}"
         next if budget2<0
         findCompatibleGPUs(local_db[:gpus], cpu.average, cpu.iGPU).each do |gpu|
-          budget3 = budget2 - gpu.dollar_price
+          budget3 = eval "budget2-gpu.#{query}"
           next if budget3<0
           findCompatibleRAM(local_db[:rams], mobo.memory, mobo.ram_slots).each do |ram|
-            budget4 = budget3 - ram.dollar_price
+            budget4 = eval "budget3-ram.#{query}"
             next if budget4<0
             local_db[:drives].each do |drive|
-              budget5 = budget4 - drive.dollar_price
+              budget5 = eval "budget4-drive.#{query}"
               next if budget5<0
               tdp = cpu.power + gpu.power
               findCompatiblePSU(local_db[:psus], tdp).each do |psu|
-                budget6 = budget5-psu.dollar_price
+                budget6 = eval "budget5-psu.#{query}"
                 next if budget6 < 0
                 if size!=3
                   computerCases =  findCompatibleCase(local_db[:cases], size, true)
@@ -173,7 +237,7 @@ module MakerHelper
                   computerCases =  findCompatibleCase(local_db[:cases], 3, false)
                 end
                 computerCases.each do |pc_case|
-                  budget7 = budget6-pc_case.dollar_price
+                  budget7 = eval "budget6-pc_case.#{query}"
                   next if budget7 < 0
                   #cpu, mobo, gpu, ram, drive, case, psu, cooler
                   performance = weights[0]*cpu.average + weights[1] * mobo.score + weights[2] * gpu.performance + weights[3]* ram.score + weights[5]* pc_case.performance + weights[4] * drive.performance + weights[6]*psu.performance
@@ -195,7 +259,7 @@ module MakerHelper
         end
       end
     end
-    if !build[0]==0 and prebuilt
+    if build[0]!=0
       prebuilt.price = build[8]
       prebuilt.performance=build[7]
       prebuilt.partlist = "#{build[0]},#{build[1]},#{build[2]},#{build[3]},#{build[4]},#{build[5]},#{build[6]}"
@@ -203,89 +267,7 @@ module MakerHelper
       prebuilt.save
     end
     return build
-    else #for euro
-      local_db = fetchAllParts(budget, EURO, size)
-
-    end
 
   end
-  def buildAStandardPCInDollars(budget, size=ATX)
-    build = [0,0,0,0,0,0,0,0,0]
-    prebuilt = Prebuilt.where("type_build = ? and size = ? and price between ? and ?", 1, size, budget-20, budget).order(price: :desc).first
-    if (prebuilt)
-      if (Time.now - prebuilt.updated_at < 2.days)
-        return prebuiltToArray(prebuilt)
-      end
-    else
-      prebuilt=Prebuilt.new
-      prebuilt.type_build = 1
-      prebuilt.size = size
-    end
-
-    cpus = Processor.where("dollar_price > ? and dollar_price < ?", 0.15 * budget, 0.65 * budget).to_a
-    mobos = Motherboard.where("dollar_price > 0 and size<=? and dollar_price < ?", size, 0.4 * budget).to_a
-    gpus = Graphic.where("size<=? and (dollar_price between ? and ? or dollar_price = 0)", size, 0.3 * budget, 0.75 * budget).to_a
-    rams = Memory.where("dollar_price between ? and ?", 0, 0.35 * budget).to_a
-    drives = Drive.where("dollar_price between ? and ?", 0, 0.35 * budget).to_a
-    psus = PowerSupply.where("dollar_price between ? and ?", 0, 0.45 * budget).to_a
-    cases = ComputerCase.where("dollar_price between ? and ?", 0, 0.30 * budget).to_a
-
-      cpus.each do |cpu|
-      budget1 = budget-cpu.dollar_price
-      next if budget1<0
-
-      findCompatibleMobos(mobos, cpu.platform_id).each do |mobo|
-        budget2 = budget1 - mobo.dollar_price
-        next if budget2<0
-        findCompatibleGPUs(gpus, cpu.average, cpu.iGPU).each do |gpu|
-          budget3 = budget2 - gpu.dollar_price
-          next if budget3<0
-          findCompatibleRAM(rams, mobo.memory, mobo.ram_slots).each do |ram|
-            budget4 = budget3 - ram.dollar_price
-            next if budget4<0
-            drives.each do |drive|
-              budget5 = budget4 - drive.dollar_price
-              next if budget5<0
-              tdp = cpu.power + gpu.power
-              findCompatiblePSU(psus, tdp).each do |psu|
-                budget6 = budget5-psu.dollar_price
-                next if budget6 < 0
-                if size!=3
-                  computerCases =  findCompatibleCase(cases, size, true)
-                else
-                  computerCases =  findCompatibleCase(cases, 3, false)
-                end
-                computerCases.each do |pc_case|
-                  budget7 = budget6-pc_case.dollar_price
-                  next if budget7 < 0
-                  performance = 6*cpu.average + 1.5 * mobo.score + 9 * gpu.performance + 2* ram.score + 2* pc_case.performance + 2 * drive.performance + 5*psu.performance
-                  if performance > build[7]
-                    build[0]=cpu.id
-                    build[1]=mobo.id
-                    build[2]=gpu.id
-                    build[3]=ram.id
-                    build[4]=drive.id
-                    build[5]=psu.id
-                    build[6]=pc_case.id
-                    build[7]=performance.to_f.round(2)
-                    build[8]=(budget-budget7).to_f.round(2)
-                  end
-                end
-              end
-            end
-          end
-        end
-      end
-    end
-    unless build[0]==0
-      prebuilt.price = build[8]
-      prebuilt.performance=build[7]
-      prebuilt.partlist = "#{build[0]},#{build[1]},#{build[2]},#{build[3]},#{build[4]},#{build[5]},#{build[6]}"
-      prebuilt.updated_at=Time.now #this line is hopefully useless but it seems that there were some weird issues when i removed it in dev environment
-      prebuilt.save
-    end
-    return build
-  end
-
 
 end

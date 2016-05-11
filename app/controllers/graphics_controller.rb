@@ -78,7 +78,6 @@ class GraphicsController < ApplicationController
       gpu.link = entry[5]
       gpu.size = entry[6]
       gpu.cpu_average = entry[7]
-      sleep(1)
       gpu.save
     end
 
