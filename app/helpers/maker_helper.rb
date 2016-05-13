@@ -109,7 +109,7 @@ module MakerHelper
     case budget
       when 0..170
         raise InsufficientBudgetException
-      when 171..325
+      when 171..310
         cpus = Processor.where("#{query} > ? and #{query} < ? and (platform_id = #{amd_apu.id} or platform_id = #{intel_1151.id}) ", 0, 100).to_a
         mobos = Motherboard.where("#{query} > 0 and size<=? and #{query} < ? and (platform_id = #{amd_apu.id} or platform_id = #{intel_1151.id})", size, 65).to_a
         gpus = Graphic.where("size<=? and (#{query} between ? and ? or #{query} = 0)", size, 0, 150).to_a
@@ -117,7 +117,7 @@ module MakerHelper
         drives = Drive.where("#{query} between ? and ?", 0, 65).to_a
         psus = PowerSupply.where("#{query} between ? and ?", 20, 50).to_a
         cases = ComputerCase.where("#{query} between ? and ?", 0, 40).to_a
-      when 326..600
+      when 311..600
         if type == GAMING
           cpus = Processor.where("#{query} > ? and #{query} < ? and platform_id = #{intel_1151.id}", 55, 225).to_a #
           gpus = Graphic.where("size<=? and (#{query} between ? and ? or #{query} = 0)", size, 80, 250).to_a
@@ -128,7 +128,7 @@ module MakerHelper
         mobos = Motherboard.where("#{query} > 0 and size<=? and #{query} < ? and platform_id = #{intel_1151.id}", size, 90).to_a
         rams = Memory.where("#{query} between ? and ? and ram_type = 2", 0, 80).to_a
         drives = Drive.where("#{query} between ? and ?", 0, 110).to_a
-        psus = PowerSupply.where("#{query} between ? and ?", 40, 100).to_a
+        psus = PowerSupply.where("#{query} between ? and ?", 30, 60).to_a
         cases = ComputerCase.where("#{query} between ? and ?", 0, 65).to_a
 
       when 601..900
@@ -142,7 +142,7 @@ module MakerHelper
         mobos = Motherboard.where("#{query} > 0 and size<=? and #{query} < ? and platform_id > #{amd_apu.id}", size, 150).to_a
         rams = Memory.where("#{query} between ? and ? and ram_type = 2", 30, 105).to_a
         drives = Drive.where("#{query} between ? and ?", 20, 110).to_a
-        psus = PowerSupply.where("#{query} between ? and ?", 60, 140).to_a
+        psus = PowerSupply.where("#{query} between ? and ?", 45, 80).to_a
         cases = ComputerCase.where("#{query} between ? and ?", 0, 65).to_a
 
       when 901..1300
@@ -156,7 +156,7 @@ module MakerHelper
         mobos = Motherboard.where("#{query} > ? and size<=? and #{query} < ? and (platform_id = #{intel_1151.id} or platform_id = #{intel_1151_oc.id} or platform_id = #{intel_enthusiast.id})", 60, size, 230).to_a
         rams = Memory.where("#{query} between ? and ? and ram_type = 2", 24, 125).to_a
         drives = Drive.where("#{query} between ? and ?", 35, 150).to_a
-        psus = PowerSupply.where("#{query} between ? and ?", 65, 170).to_a
+        psus = PowerSupply.where("#{query} between ? and ?", 75, 105).to_a
         cases = ComputerCase.where("#{query} between ? and ?", 10, 100).to_a
 
       else
@@ -165,19 +165,20 @@ module MakerHelper
         gpus = Graphic.where("size<=? and performance >= ?", size, 65).to_a
         rams = Memory.where("score >= ? and ram_type = 2", 50).to_a
         drives = Drive.where("performance >= ?", 70).to_a
-        psus = PowerSupply.where("performance >= ?", 70).to_a
+        psus = PowerSupply.where("performance >= ?", 85).to_a
         cases = ComputerCase.where("#{query} between ? and ?", 20, 400).to_a
 
 
     end
-
+    if Rails.env.development?
+    end
     return {:cpus => cpus, :mobos => mobos, :gpus=> gpus, :rams=>rams, :drives=>drives, :psus=>psus, :cases=>cases}#,coolers]
   end
 
   def buildAPC(budget, size=ATX, type=GAMING, currency=DOLLAR, custom_weights=[1,1,1,1,1,1,1,1])
     build = [0,0,0,0,0,0,0,0,0,0]
     if type == GAMING
-      weights = [6, 1.5, 9, 2, 2, 2, 5, 1] #cpu, mobo, gpu, ram, drive, case, psu, cooler
+      weights = [6, 1, 9, 1, 1, 1, 1.5, 1] #cpu, mobo, gpu, ram, drive, case, psu, cooler
     else
       if type == WORKSTATION
         weights = [9,3,5,4,2,4,5,1]

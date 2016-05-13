@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'power_supplies/new_by_spread'
+  post 'power_supplies/create_by_spread'
   get 'memories/new_by_spread'
   post 'memories/create_by_spread'
   get 'drives/new_by_spread'

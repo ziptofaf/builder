@@ -61,6 +61,29 @@ class PowerSuppliesController < ApplicationController
     end
   end
 
+  def new_by_spread
+  end
+
+  def create_by_spread
+    if power_supply_params[:spreadsheet].empty?
+      redirect_to power_supplies_path, notice: 'Invalid input.'
+      return
+    end
+    entries = power_supply_params[:spreadsheet].split(/\n/)
+    entries.each do |row|
+      psu = PowerSupply.new
+      entry = row.split(';')
+      psu.name = entry[0]
+      psu.performance = entry[3]
+      psu.power = entry[2]
+      psu.link = entry[1]
+      psu.save
+    end
+
+    redirect_to power_supplies_path, notice: 'Records saved.'
+    return
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_power_supply
@@ -69,6 +92,6 @@ class PowerSuppliesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def power_supply_params
-      params.require(:power_supply).permit(:name, :link, :dollar_price, :euro_price, :power, :performance)
+      params.require(:power_supply).permit(:name, :link, :dollar_price, :euro_price, :power, :performance, :spreadsheet)
     end
 end
