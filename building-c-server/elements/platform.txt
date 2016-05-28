@@ -1,0 +1,1 @@
+[{"id":1,"name":"FM2+","url":"http://127.0.0.1:3000/platforms/1.json"},{"id":2,"name":"X99","url":"http://127.0.0.1:3000/platforms/2.json"},{"id":3,"name":"1151","url":"http://127.0.0.1:3000/platforms/3.json"},{"id":4,"name":"1151OC","url":"http://127.0.0.1:3000/platforms/4.json"}]

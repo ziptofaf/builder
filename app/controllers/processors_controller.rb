@@ -1,6 +1,6 @@
 class ProcessorsController < ApplicationController
   before_action :set_processor, only: [:show, :edit, :update, :destroy]
-
+  before_action :is_admin?
   # GET /processors
   # GET /processors.json
   def index

@@ -1,6 +1,6 @@
 class PowerSuppliesController < ApplicationController
   before_action :set_power_supply, only: [:show, :edit, :update, :destroy]
-
+  before_action :is_admin?
   # GET /power_supplies
   # GET /power_supplies.json
   def index

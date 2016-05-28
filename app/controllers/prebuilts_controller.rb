@@ -1,6 +1,6 @@
 class PrebuiltsController < ApplicationController
   before_action :set_prebuilt, only: [:show, :edit, :update, :destroy]
-
+  before_action :is_admin?
   # GET /prebuilts
   # GET /prebuilts.json
   def index

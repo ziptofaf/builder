@@ -1,5 +1,6 @@
 class DrivesController < ApplicationController
   before_action :set_drive, only: [:show, :edit, :update, :destroy]
+  before_action :is_admin?
 
   # GET /drives
   # GET /drives.json

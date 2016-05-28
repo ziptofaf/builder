@@ -1,6 +1,6 @@
 class PlatformsController < ApplicationController
   before_action :set_platform, only: [:show, :edit, :update, :destroy]
-
+  before_action :is_admin?
   # GET /platforms
   # GET /platforms.json
   def index

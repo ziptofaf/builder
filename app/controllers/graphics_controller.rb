@@ -1,6 +1,6 @@
 class GraphicsController < ApplicationController
   before_action :set_graphic, only: [:show, :edit, :update, :destroy]
-
+  before_action :is_admin?
   # GET /graphics
   # GET /graphics.json
   def index

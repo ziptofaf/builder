@@ -1,6 +1,6 @@
 class MotherboardsController < ApplicationController
   before_action :set_motherboard, only: [:show, :edit, :update, :destroy]
-
+  before_action :is_admin?
   # GET /motherboards
   # GET /motherboards.json
   def index

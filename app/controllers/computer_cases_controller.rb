@@ -1,5 +1,6 @@
 class ComputerCasesController < ApplicationController
   before_action :set_computer_case, only: [:show, :edit, :update, :destroy]
+  before_action :is_admin?
 
   # GET /computer_cases
   # GET /computer_cases.json

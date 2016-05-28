@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'static/index'
+
+  get 'static/about'
+
+  get 'static/examples'
+  root 'static#index'
+  devise_for :users
   get 'power_supplies/new_by_spread'
   post 'power_supplies/create_by_spread'
   get 'memories/new_by_spread'
