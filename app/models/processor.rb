@@ -1,7 +1,7 @@
 class Processor < ActiveRecord::Base
   include PriceHelper
   belongs_to :platform
-  before_save :max_of_hundred, :calculateAverage #, :getPrice
+  before_save :max_of_hundred, :calculateAverage, :defaultSettings #, :getPrice
   has_many :prebuilts, dependent: :destroy
 
   def calculateAverage
@@ -27,6 +27,12 @@ class Processor < ActiveRecord::Base
         cpu.save
       end
       self.multi = 100
+    end
+  end
+  
+  def defaultSettings
+    if self.OC.nil?
+      self.OC = 1.0
     end
   end
 

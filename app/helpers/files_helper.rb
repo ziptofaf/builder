@@ -13,4 +13,17 @@ module FilesHelper
       system ("convert #{path+'/'+file} -resize 200x200 #{smaller_path+'/'+split}")
     end
   end
+
+  def regenerateBuilderServerFiles
+
+    path = Rails.root.to_s+"/building-c-server/elements/"
+    files = ["cpu.txt", "mobo.txt", "gpu.txt", "ram.txt", "psu.txt", "drive.txt", "case.txt", "platform.txt"]
+    which_model = ["Processor", "Motherboard", "Graphic", "Memory", "PowerSupply", "Drive", "ComputerCase", "Platform"]
+    for i in 0..7
+      text = eval("#{which_model[i]}.all.to_json")
+      file = File.open(path+files[i], "w")
+      file.write(text)
+      file.close
+    end
+  end
 end
