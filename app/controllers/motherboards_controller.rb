@@ -122,6 +122,6 @@ class MotherboardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def motherboard_params
-      params.require(:motherboard).permit(:name, :platform_id, :memory, :link, :size, :OC, :ram_slots, :dollar_price, :euro_price, :score, :spreadsheet)
+      params.require(:motherboard).permit(:name, :platform_id, :memory, :link, :size, :OC, :ram_slots, :dollar_price, :euro_price, :score, :spreadsheet, :picture)
     end
 end

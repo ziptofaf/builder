@@ -13,6 +13,7 @@
       <th>Sticks</th>
       <th>Capacity</th>
       <th>Score</th>
+      <th>picture</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -28,6 +29,7 @@
         <td><%= memory.sticks %></td>
         <td><%= memory.capacity %></td>
         <td><%= memory.score %></td>
+        <td><%= memory.picture %></td>
         <td><%= link_to 'Show', memory %></td>
         <td><%= link_to 'Edit', edit_memory_path(memory) %></td>
         <td><%= link_to 'Destroy', memory, method: :delete, data: { confirm: 'Are you sure?' } %></td>

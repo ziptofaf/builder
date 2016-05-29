@@ -94,6 +94,6 @@ class GraphicsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def graphic_params
-      params.require(:graphic).permit(:name, :link, :size, :dollar_price, :euro_price, :cpu_average, :performance, :power, :spreadsheet)
+      params.require(:graphic).permit(:name, :link, :size, :dollar_price, :euro_price, :cpu_average, :performance, :power, :spreadsheet, :picture)
     end
 end

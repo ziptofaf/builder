@@ -94,6 +94,6 @@ class DrivesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def drive_params
-      params.require(:drive).permit(:name, :link, :dollar_price, :euro_price, :capacity, :performance, :disk_type, :spreadsheet)
+      params.require(:drive).permit(:name, :link, :dollar_price, :euro_price, :capacity, :performance, :disk_type, :spreadsheet, :picture)
     end
 end

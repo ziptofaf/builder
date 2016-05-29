@@ -92,6 +92,6 @@ class PowerSuppliesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def power_supply_params
-      params.require(:power_supply).permit(:name, :link, :dollar_price, :euro_price, :power, :performance, :spreadsheet)
+      params.require(:power_supply).permit(:name, :link, :dollar_price, :euro_price, :power, :performance, :spreadsheet, :picture)
     end
 end

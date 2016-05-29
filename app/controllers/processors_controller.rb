@@ -69,6 +69,6 @@ class ProcessorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def processor_params
-      params.require(:processor).permit(:name, :single, :multi, :average, :platform_id, :iGPU, :OC, :link, :power, :dollar_price, :euro_price)
+      params.require(:processor).permit(:name, :single, :multi, :average, :platform_id, :iGPU, :OC, :link, :power, :dollar_price, :euro_price, :picture)
     end
 end

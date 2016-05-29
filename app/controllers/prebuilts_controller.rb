@@ -69,6 +69,6 @@ class PrebuiltsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def prebuilt_params
-      params.require(:prebuilt).permit(:price, :partlist, :performance, :type_build)
+      params.require(:prebuilt).permit(:price, :processor_id, :graphic_id, :memory_id, :drive_id, :motherboard_id, :computer_case_id, :power_supply_id, :performance, :type_build, :real_price)
     end
 end

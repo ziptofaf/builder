@@ -11,6 +11,7 @@
       <th>Euro price</th>
       <th>Size</th>
       <th>Performance</th>
+      <th>picture</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -24,6 +25,7 @@
         <td><%= computer_case.euro_price %></td>
         <td><%= computer_case.size %></td>
         <td><%= computer_case.performance %></td>
+        <td><%= computer_case.picture %></td>
         <td><%= link_to 'Show', computer_case %></td>
         <td><%= link_to 'Edit', edit_computer_case_path(computer_case) %></td>
         <td><%= link_to 'Destroy', computer_case, method: :delete, data: { confirm: 'Are you sure?' } %></td>

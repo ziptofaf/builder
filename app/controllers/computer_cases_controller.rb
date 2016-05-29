@@ -70,6 +70,6 @@ class ComputerCasesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def computer_case_params
-      params.require(:computer_case).permit(:name, :link, :dollar_price, :euro_price, :size, :performance)
+      params.require(:computer_case).permit(:name, :link, :dollar_price, :euro_price, :size, :performance, :picture)
     end
 end

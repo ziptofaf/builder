@@ -11,6 +11,7 @@
       <th>Euro price</th>
       <th>Power</th>
       <th>Performance</th>
+      <th>Picture</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -24,6 +25,7 @@
         <td><%= power_supply.euro_price %></td>
         <td><%= power_supply.power %></td>
         <td><%= power_supply.performance %></td>
+        <td><%= power_supply.picture %></td>
         <td><%= link_to 'Show', power_supply %></td>
         <td><%= link_to 'Edit', edit_power_supply_path(power_supply) %></td>
         <td><%= link_to 'Destroy', power_supply, method: :delete, data: { confirm: 'Are you sure?' } %></td>

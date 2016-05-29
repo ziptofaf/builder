@@ -6,10 +6,19 @@
   <thead>
     <tr>
       <th>Price</th>
-      <th>Partlist</th>
+      <th>Real price</th>
       <th>Performance</th>
       <th>Type build</th>
-      <th colspan="3"></th>
+      <th>Size</th>
+      <th>Processor</th>
+      <th>Motherboard</th>
+      <th>Graphic</th>
+      <th>RAM</th>
+      <th>Drive</th>
+      <th>Power Supply</th>
+      <th>Computer Case</th>
+
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -17,12 +26,21 @@
     <% @prebuilts.each do |prebuilt| %>
       <tr>
         <td><%= prebuilt.price %></td>
-        <td><%= prebuilt.partlist %></td>
+        <td><%= prebuilt.real_price %></td>
         <td><%= prebuilt.performance %></td>
         <td><%= prebuilt.type_build %></td>
+        <td><%= prebuilt.size %></td>
+        <td><%= prebuilt.processor_id %></td>
+        <td><%= prebuilt.motherboard_id %></td>
+        <td><%= prebuilt.graphic_id %></td>
+        <td><%= prebuilt.memory_id %></td>
+        <td><%= prebuilt.drive_id %></td>
+        <td><%= prebuilt.power_supply_id %></td>
+        <td><%= prebuilt.computer_case_id %></td>
         <td><%= link_to 'Show', prebuilt %></td>
         <td><%= link_to 'Edit', edit_prebuilt_path(prebuilt) %></td>
         <td><%= link_to 'Destroy', prebuilt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
       </tr>
     <% end %>
   </tbody>

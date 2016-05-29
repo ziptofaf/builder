@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160522175347) do
+ActiveRecord::Schema.define(version: 20160529062525) do
 
   create_table "computer_cases", force: :cascade do |t|
     t.string   "name"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20160522175347) do
     t.integer  "performance"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+    t.string   "picture"
   end
 
   create_table "drives", force: :cascade do |t|
@@ -34,6 +35,7 @@ ActiveRecord::Schema.define(version: 20160522175347) do
     t.integer  "disk_type"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+    t.string   "picture"
   end
 
   create_table "graphics", force: :cascade do |t|
@@ -47,6 +49,7 @@ ActiveRecord::Schema.define(version: 20160522175347) do
     t.integer  "power"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+    t.string   "picture"
   end
 
   create_table "memories", force: :cascade do |t|
@@ -60,6 +63,7 @@ ActiveRecord::Schema.define(version: 20160522175347) do
     t.integer  "score"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+    t.string   "picture"
   end
 
   create_table "motherboards", force: :cascade do |t|
@@ -75,6 +79,7 @@ ActiveRecord::Schema.define(version: 20160522175347) do
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
     t.integer  "memory"
+    t.string   "picture"
   end
 
   add_index "motherboards", ["platform_id"], name: "index_motherboards_on_platform_id"
@@ -94,19 +99,34 @@ ActiveRecord::Schema.define(version: 20160522175347) do
     t.integer  "performance"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+    t.string   "picture"
   end
 
   create_table "prebuilts", force: :cascade do |t|
-    t.decimal  "price",       precision: 8, scale: 2
-    t.string   "partlist"
-    t.decimal  "performance", precision: 8, scale: 2
+    t.decimal  "price",            precision: 8, scale: 2
+    t.decimal  "performance",      precision: 8, scale: 2
     t.integer  "type_build"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.integer  "size"
     t.integer  "currency"
-    t.decimal  "real_price",  precision: 5, scale: 2
+    t.decimal  "real_price",       precision: 5, scale: 2
+    t.integer  "processor_id"
+    t.integer  "graphic_id"
+    t.integer  "computer_case_id"
+    t.integer  "drive_id"
+    t.integer  "motherboard_id"
+    t.integer  "power_supply_id"
+    t.integer  "memory_id"
   end
+
+  add_index "prebuilts", ["computer_case_id"], name: "index_prebuilts_on_computer_case_id"
+  add_index "prebuilts", ["drive_id"], name: "index_prebuilts_on_drive_id"
+  add_index "prebuilts", ["graphic_id"], name: "index_prebuilts_on_graphic_id"
+  add_index "prebuilts", ["memory_id"], name: "index_prebuilts_on_memory_id"
+  add_index "prebuilts", ["motherboard_id"], name: "index_prebuilts_on_motherboard_id"
+  add_index "prebuilts", ["power_supply_id"], name: "index_prebuilts_on_power_supply_id"
+  add_index "prebuilts", ["processor_id"], name: "index_prebuilts_on_processor_id"
 
   create_table "processors", force: :cascade do |t|
     t.string   "name"
@@ -122,6 +142,7 @@ ActiveRecord::Schema.define(version: 20160522175347) do
     t.decimal  "euro_price",   precision: 9, scale: 2
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+    t.string   "picture"
   end
 
   add_index "processors", ["platform_id"], name: "index_processors_on_platform_id"

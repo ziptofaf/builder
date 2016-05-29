@@ -94,6 +94,6 @@ class MemoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def memory_params
-      params.require(:memory).permit(:ram_type, :name, :link, :dollar_price, :euro_price, :sticks, :capacity, :score, :spreadsheet)
+      params.require(:memory).permit(:ram_type, :name, :link, :dollar_price, :euro_price, :sticks, :capacity, :score, :spreadsheet, :picture)
     end
 end

@@ -15,6 +15,8 @@
       <th>Dollar price</th>
       <th>Euro price</th>
       <th>Score</th>
+      <th>picture</th>
+
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -32,6 +34,7 @@
         <td><%= motherboard.dollar_price %></td>
         <td><%= motherboard.euro_price %></td>
         <td><%= motherboard.score %></td>
+        <td><%= motherboard.picture %></td>
         <td><%= link_to 'Show', motherboard %></td>
         <td><%= link_to 'Edit', edit_motherboard_path(motherboard) %></td>
         <td><%= link_to 'Destroy', motherboard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
