@@ -3,6 +3,8 @@ require 'test_helper'
 class MotherboardsControllerTest < ActionController::TestCase
   setup do
     @motherboard = motherboards(:one)
+    login_admin
+
   end
 
   test "should get index" do

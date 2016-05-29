@@ -3,6 +3,8 @@ require 'test_helper'
 class MemoriesControllerTest < ActionController::TestCase
   setup do
     @memory = memories(:one)
+    login_admin
+
   end
 
   test "should get index" do

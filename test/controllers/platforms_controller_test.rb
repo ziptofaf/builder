@@ -3,6 +3,8 @@ require 'test_helper'
 class PlatformsControllerTest < ActionController::TestCase
   setup do
     @platform = platforms(:one)
+    login_admin
+
   end
 
   test "should get index" do

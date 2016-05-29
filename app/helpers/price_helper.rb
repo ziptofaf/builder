@@ -2,7 +2,7 @@ module PriceHelper
 require 'mechanize'
 
 def getPrice
-  if self.link.empty?
+  if self.link.nil? or self.link.empty?
     if self.dollar_price.nil?
       self.dollar_price = -1.00
       self.euro_price = -1.00

@@ -3,6 +3,7 @@ require 'test_helper'
 class ComputerCasesControllerTest < ActionController::TestCase
   setup do
     @computer_case = computer_cases(:one)
+    login_admin
   end
 
   test "should get index" do

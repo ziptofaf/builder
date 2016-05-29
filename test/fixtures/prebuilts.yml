@@ -2,12 +2,28 @@
 
 one:
   price: 9.99
-  partlist: MyString
+  real_price: 9.99
   performance: 9.99
   type_build: 1
+  currency: 1
+  processor: one
+  graphic: one
+  motherboard: one
+  memory: one
+  drive_id: 999
+  power_supply: one
+  computer_case: one
 
 two:
   price: 9.99
-  partlist: MyString
+  real_price: 9.99
   performance: 9.99
-  type_build: 1
+  type_build: 2
+  currency: 2
+  processor: two
+  graphic: two
+  motherboard: two
+  memory: two
+  drive: two
+  power_supply: two
+  computer_case: two

@@ -3,6 +3,8 @@ require 'test_helper'
 class GraphicsControllerTest < ActionController::TestCase
   setup do
     @graphic = graphics(:one)
+    login_admin
+
   end
 
   test "should get index" do

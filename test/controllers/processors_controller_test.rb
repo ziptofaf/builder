@@ -3,6 +3,8 @@ require 'test_helper'
 class ProcessorsControllerTest < ActionController::TestCase
   setup do
     @processor = processors(:one)
+    login_admin
+
   end
 
   test "should get index" do

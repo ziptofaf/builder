@@ -2,7 +2,7 @@
 
 one:
   name: MyString
-  link: MyString
+  link:
   dollar_price: 9.99
   euro_price: 9.99
   power: 1
@@ -10,7 +10,7 @@ one:
 
 two:
   name: MyString
-  link: MyString
+  link: 
   dollar_price: 9.99
   euro_price: 9.99
   power: 1

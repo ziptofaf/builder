@@ -3,6 +3,8 @@ require 'test_helper'
 class PowerSuppliesControllerTest < ActionController::TestCase
   setup do
     @power_supply = power_supplies(:one)
+    login_admin
+
   end
 
   test "should get index" do
