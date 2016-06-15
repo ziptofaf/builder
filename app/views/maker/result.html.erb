@@ -1,0 +1,47 @@
+<table class = "table table-bordered table-checkered">
+  <thead>
+    <tr>
+      <th>Partname</th>
+      <th>Price</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= link_to "#{@build.processor.name}", "#{getValidURL(@build.processor.link, @currency)}" %></td>
+      <td><%= getValidCurrency(@build.processor,@currency) %></td>
+    </tr>
+    <tr>
+      <td><%= link_to "#{@build.motherboard.name}", "#{getValidURL(@build.motherboard.link, @currency)}" %></td>
+      <td><%= getValidCurrency(@build.motherboard,@currency) %></td>
+    </tr>
+    <tr>
+      <td><%= link_to "#{@build.graphic.name}", "#{getValidURL(@build.graphic.link, @currency)}" %></td>
+      <td><%= getValidCurrency(@build.graphic,@currency) %></td>
+    </tr>
+    <tr>
+      <td><%= link_to "#{@build.memory.name}", "#{getValidURL(@build.memory.link, @currency)}" %></td>
+      <td><%= getValidCurrency(@build.memory,@currency) %></td>
+    </tr>
+    <tr>
+      <td><%= link_to "#{@build.drive.name}", "#{getValidURL(@build.drive.link, @currency)}" %></td>
+      <td><%= getValidCurrency(@build.drive,@currency) %></td>
+    </tr>
+    <tr>
+      <td><%= link_to "#{@build.power_supply.name}", "#{getValidURL(@build.power_supply.link, @currency)}" %></td>
+      <td><%= getValidCurrency(@build.power_supply,@currency) %></td>
+    </tr>
+    <tr>
+      <td>Choice of a computer case is an individual one, you can look at this list for some recommendations</td>
+      <td><%= getValidCurrency(@build.computer_case,@currency) %> - estimated!</td>
+    </tr>
+    <tr>
+      <td>Total</td>
+      <td><%= totalWithCurrency(@build.real_price, @currency) %></td>
+    </tr>
+
+  </tbody>
+
+</table>
+
+<br>

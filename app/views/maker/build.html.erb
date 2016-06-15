@@ -1,2 +1,31 @@
-<h1>Maker#build</h1>
-<p>Find me in app/views/maker/build.html.erb</p>
+<h1>Let's build a PC</h1>
+<% if flash[:error] %>
+<div class="alert alert-danger">
+  <a class="close" data-dismiss="alert">×</a>
+  <strong>Whoops! </strong><%= flash[:error] %>
+</div>
+<% end %>
+<%= form_for :maker, :url => maker_make_path do |f| %>
+Choose your currency:
+<%= f.radio_button :currency, 1, :checked=>true %>
+<%= f.label :currency_1, "US Dollar" %>
+<%= f.radio_button :currency, 2 %>
+<%= f.label :currency_2, "Euro" %>
+<br>
+<%= f.label :budget, "Specify your budget" %>
+<%= f.range_field :budget, :min=>200, :max=>3000, :step=>5, :class=>"slide", :id=>"slider1", :oninput=>"outputField.value = slider1.value" %>
+<output name="outputField" id="ageOutputId" class= "text-center">1600</output>
+What kind of build are you trying to make?<br>
+<%= f.radio_button :build_type, 1, :checked=>true %>
+<%= f.label :build_type_1, "Gaming" %>
+<%= f.radio_button :build_type, 2 %>
+<%= f.label :build_type_2, "Workstation" %><br>
+Are you aiming for a specific size?<br>
+<%= f.radio_button :build_size, 3, :checked=>true %>
+<%= f.label :build_size_3, "ATX (no preference)" %>
+<%= f.radio_button :build_size, 2 %>
+<%= f.label :build_size_2, "MicroATX at most" %>
+<%= f.radio_button :build_size, 1 %>
+<%= f.label :build_size_1, "MiniITX" %><br>
+<%= f.submit "Build a PC", :class => "btn btn-lg" %>
+<% end %>

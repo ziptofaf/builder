@@ -45,5 +45,29 @@ end
     end
   end
 
+def getValidURL(url, currency)
+  return url if currency==1
+  url = url.gsub('pcpartpicker.com', 'de.pcpartpicker.com')
+  return url
+end
+
+def getValidCurrency(thing, currency)
+  if currency==1
+    return "$" + (sprintf "%.02f", thing.dollar_price)
+  end
+  if currency==2
+    return (sprintf "%.02f", thing.euro_price)+"€"
+  end
+end
+
+def totalWithCurrency(value, currency)
+  if currency==1
+    return "$" + (sprintf "%.02f", value)
+
+  end
+  if currency==2
+    return (sprintf "%.02f", value)+"€"
+  end
+end
 
 end
