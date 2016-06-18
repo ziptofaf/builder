@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :prebuilts
   resources :computer_cases
   get 'admin/list'
-
+  match 'admin', to: 'admin#list', via: [:get]
   resources :cases
   resources :drives
   resources :power_supplies

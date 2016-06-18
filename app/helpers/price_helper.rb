@@ -46,6 +46,7 @@ end
   end
 
 def getValidURL(url, currency)
+  return "#" if url.empty?
   return url if currency==1
   url = url.gsub('pcpartpicker.com', 'de.pcpartpicker.com')
   return url
