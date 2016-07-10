@@ -10,7 +10,7 @@ module FilesHelper
       split = file.split(".")
       split[0]+= "_small"
       split = split.join(".")
-      system ("convert #{path+'/'+file} -resize 200x200 #{smaller_path+'/'+split}")
+      system ("convert #{path+'/'+file} -resize 120x120 #{smaller_path+'/'+split}")
     end
   end
 

@@ -5,7 +5,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import url(https://fonts.googleapis.com/css?family=Quicksand);
-
+@import url(https://fonts.googleapis.com/css?family=Khula:400,700);
 form {
   font-family: 'Quicksand', sans-serif;
 }
@@ -50,6 +50,34 @@ form {
   margin-top: 3px;
   margin-bottom: 3px;
   display:block
+}
+
+.results tr {
+  font-family: 'Khula', sans-serif;
+  font-size:25px;
+
+
+}
+.results td {
+  font-family: 'Khula', sans-serif;
+  font-weight: 700;
+  font-size:20px;
+  vertical-align: middle !important;
+}
+.middle
+{
+  vertical-align: middle;
+  text-align: center;
+
+}
+.td.middle {
+  vertical-align: middle;
+}
+
+.blue-thing {
+  background-color: #AECCFF;
+  font-weight: bolder;
+  color: white;
 }
 
 

@@ -79,6 +79,7 @@ def imageURL_small
   return "#" if self.picture.nil?
   url = "/images/small/" + self.picture
   where = url.index(".")
+  return "#" if where.nil?
   url.insert(where, "_small")
   return url
 end

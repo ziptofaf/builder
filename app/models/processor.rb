@@ -1,7 +1,7 @@
 class Processor < ActiveRecord::Base
   include PriceHelper
   belongs_to :platform
-  before_save :max_of_hundred, :calculateAverage, :defaultSettings
+  #before_save :max_of_hundred, :calculateAverage, :defaultSettings
   before_create :getPrice
   has_many :prebuilts, dependent: :destroy
 

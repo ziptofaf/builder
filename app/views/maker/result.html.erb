@@ -1,4 +1,4 @@
-<table class = "table table-bordered">
+<table class = "table table-bordered results">
   <thead>
     <tr>
       <th>Partname</th>
@@ -10,42 +10,42 @@
     <tr>
       <td><%= link_to "#{@build.processor.name}", "#{getValidURL(@build.processor.link, @currency)}" %></td>
       <td><%= link_to image_tag(@build.processor.imageURL_small), "#{@build.processor.imageURL}" %></td>
-      <td><%= getValidCurrency(@build.processor,@currency) %></td>
+      <td class = "middle"><%= getValidCurrency(@build.processor,@currency) %></td>
     </tr>
     <tr>
       <td><%= link_to "#{@build.motherboard.name}", "#{getValidURL(@build.motherboard.link, @currency)}" %></td>
       <td><%= link_to image_tag(@build.motherboard.imageURL_small), "#{@build.motherboard.imageURL}" %></td>
-      <td><%= getValidCurrency(@build.motherboard,@currency) %></td>
+      <td class = "middle"><%= getValidCurrency(@build.motherboard,@currency) %></td>
     </tr>
     <tr>
       <td><%= link_to "#{@build.graphic.name}", "#{getValidURL(@build.graphic.link, @currency)}" %></td>
       <td><%= link_to image_tag(@build.graphic.imageURL_small), "#{@build.graphic.imageURL}" %></td>
-      <td><%= getValidCurrency(@build.graphic,@currency) %></td>
+      <td class = "middle"><%= getValidCurrency(@build.graphic,@currency) %></td>
     </tr>
     <tr>
       <td><%= link_to "#{@build.memory.name}", "#{getValidURL(@build.memory.link, @currency)}" %></td>
       <td><%= link_to image_tag(@build.memory.imageURL_small), "#{@build.memory.imageURL}" %></td>
-      <td><%= getValidCurrency(@build.memory,@currency) %></td>
+      <td class = "middle"><%= getValidCurrency(@build.memory,@currency) %></td>
     </tr>
     <tr>
       <td><%= link_to "#{@build.drive.name}", "#{getValidURL(@build.drive.link, @currency)}" %></td>
       <td><%= link_to image_tag(@build.drive.imageURL_small), "#{@build.drive.imageURL}" %></td>
-      <td><%= getValidCurrency(@build.drive,@currency) %></td>
+      <td class = "middle"><%= getValidCurrency(@build.drive,@currency) %></td>
     </tr>
     <tr>
       <td><%= link_to "#{@build.power_supply.name}", "#{getValidURL(@build.power_supply.link, @currency)}" %></td>
       <td><%= link_to image_tag(@build.power_supply.imageURL_small), "#{@build.power_supply.imageURL}" %></td>
-      <td><%= getValidCurrency(@build.power_supply,@currency) %></td>
+      <td class = "middle"><%= getValidCurrency(@build.power_supply,@currency) %></td>
     </tr>
     <tr>
       <td>Choice of a computer case is an individual one, you can look at this list for some recommendations</td>
       <td></td>
-      <td><%= getValidCurrency(@build.computer_case,@currency) %> - estimated!</td>
+      <td class = "middle"><%= getValidCurrency(@build.computer_case,@currency) %> - estimated!</td>
     </tr>
-    <tr>
+    <tr class = "blue-thing">
       <td>Total</td>
       <td></td>
-      <td><%= totalWithCurrency(@build.real_price, @currency) %></td>
+      <td class = "middle"><%= totalWithCurrency(@build.real_price, @currency) %></td>
     </tr>
 
   </tbody>

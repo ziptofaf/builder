@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'static/index'
 
   get 'static/about'
-  post 'maker/make'
+  get 'maker/make'
   get 'static/examples'
   root 'static#index'
   devise_for :users
