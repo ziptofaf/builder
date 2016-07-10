@@ -1,0 +1,6 @@
+<%= form_for :search, :url => admin_map_images_path do |f| %>
+<%= f.label :spread %>
+<%= f.text_area :spread, cols: "100", rows: "30" %>
+<br>
+<%= f.submit %>
+<% end %>

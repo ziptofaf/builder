@@ -1,7 +1,8 @@
 class Graphic < ActiveRecord::Base
-  #include PriceHelper
+  include PriceHelper
   has_many :prebuilts, dependent: :destroy
   before_save :max_of_hundred
+  before_create :getPrice
 
   def max_of_hundred
     if (self.performance > 100) #scores higher than 100 are impossible as they break the list
@@ -23,4 +24,6 @@ def self.RecalculateRequirements(new_avg) #for example if a new more powerful CP
     gpu.save
   end
 end
+
+
 end

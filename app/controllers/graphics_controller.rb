@@ -71,7 +71,7 @@ class GraphicsController < ApplicationController
     entries = graphic_params[:spreadsheet].split(/\n/)
     entries.each do |row|
       gpu = Graphic.new
-      entry = row.split(';')
+      entry = row.split(/[\t;]/)
       gpu.name = entry[0]
       gpu.power = entry[1]
       gpu.performance = entry[2]

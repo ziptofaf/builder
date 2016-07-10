@@ -4,3 +4,53 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url(https://fonts.googleapis.com/css?family=Quicksand);
+
+form {
+  font-family: 'Quicksand', sans-serif;
+}
+.our-checkbox {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+	border-radius: 4px;
+	border:2px solid #dcdcdc;
+	display:inline-block;
+	color:#a4a4a4;
+	font-family: 'Quicksand', sans-serif;
+	font-size:15px;
+	font-weight:bold;
+	font-style:normal;
+	height:65px;
+  line-height: 65px;
+	width:131px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #ffffff;
+  input {
+    display:none;
+  }
+  label {
+    display: inline-block;
+    line-height: 14px;
+    position: relative;
+    vertical-align: middle;
+  }
+}.our-checkbox:active {
+	position:relative;
+	top:1px;
+}
+
+.selected {
+  color:#000000;
+  border:2px solid #0381c6
+}
+
+.group {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  display:block
+}
+
+
+/* This button was generated using CSSButtonGenerator.com */

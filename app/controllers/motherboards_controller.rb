@@ -49,7 +49,7 @@ class MotherboardsController < ApplicationController
     entries = motherboard_params[:spreadsheet].split(/\n/)
     entries.each do |row|
       motherboard = Motherboard.new
-      entry = row.split(';')
+      entry = row.split(/[\t;]/)
       motherboard.name = entry[0]
       motherboard.size = entry[1]
       motherboard.ram_slots = entry[2].to_i

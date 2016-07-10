@@ -72,7 +72,7 @@ class MemoriesController < ApplicationController
       entries = memory_params[:spreadsheet].split(/\n/)
       entries.each do |row|
         mem = Memory.new
-        entry = row.split(';')
+        entry = row.split(/[\t;]/)
         mem.name = entry[0]
         mem.ram_type = entry[1]
         mem.link = entry[2]

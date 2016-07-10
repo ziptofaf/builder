@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'admin/list'
+  get 'admin/add'
+  post 'admin/map_images'
   get 'static/index'
 
   get 'static/about'

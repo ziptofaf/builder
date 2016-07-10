@@ -72,7 +72,7 @@ class PowerSuppliesController < ApplicationController
     entries = power_supply_params[:spreadsheet].split(/\n/)
     entries.each do |row|
       psu = PowerSupply.new
-      entry = row.split(';')
+      entry = row.split(/[\t;]/)
       psu.name = entry[0]
       psu.performance = entry[3]
       psu.power = entry[2]

@@ -71,4 +71,16 @@ def totalWithCurrency(value, currency)
   end
 end
 
+def imageURL
+  return "#" if self.picture.nil?
+  return "/images/" + self.picture
+end
+def imageURL_small
+  return "#" if self.picture.nil?
+  url = "/images/small/" + self.picture
+  where = url.index(".")
+  url.insert(where, "_small")
+  return url
+end
+
 end

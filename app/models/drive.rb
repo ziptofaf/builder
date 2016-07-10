@@ -1,7 +1,8 @@
 class Drive < ActiveRecord::Base
   include PriceHelper
   has_many :prebuilts, dependent: :destroy
-  before_save :getPrice, :max_of_hundred
+  before_save :max_of_hundred
+  before_create :getPrice
 
   def max_of_hundred
     if self.performance > 100

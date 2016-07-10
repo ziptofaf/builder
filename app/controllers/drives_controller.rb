@@ -63,7 +63,7 @@ class DrivesController < ApplicationController
     entries = drive_params[:spreadsheet].split(/\n/)
     entries.each do |row|
       drive = Drive.new
-      entry = row.split(';')
+      entry = row.split(/[\t;]/)
       drive.name = entry[0]
       drive.capacity = entry[1]
       drive.disk_type = entry[2]
