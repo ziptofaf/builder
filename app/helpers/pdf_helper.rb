@@ -22,6 +22,9 @@ module PdfHelper
         [@build.drive.name, getValidCurrency(@build.drive, @currency), @build.drive.link], [@build.power_supply.name, getValidCurrency(@build.power_supply, @currency), @build.power_supply.link],
         ["Computer case", getValidCurrency(@build.computer_case, @currency) +" (estimated)", ""], ["Total", sprintf("%.02f", @build.real_price) + "€", ""] ] )
       end
+      if (@build.motherboard.platform.name == "1151OC" or @build.motherboard.platform.name == "X99")
+        text "\nRemember that you will also need a cooler for your CPU! Check this link for details: "
+      end
     end
 
     def product_rows
