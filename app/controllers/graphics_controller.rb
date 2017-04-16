@@ -69,7 +69,9 @@ class GraphicsController < ApplicationController
       return
     end
     entries = graphic_params[:spreadsheet].split(/\n/)
+
     entries.each do |row|
+      row.gsub!(',','.')
       gpu = Graphic.new
       entry = row.split(/[\t;]/)
       gpu.name = entry[0]

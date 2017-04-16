@@ -21,7 +21,8 @@ Rails.application.routes.draw do
   post 'motherboards/create_by_spread'
   get 'motherboards/multiple_new_by_spread'
   post 'motherboards/multiple_create_by_spread'
-
+  get 'processors/new_by_spread'
+  post 'processors/create_by_spread'
   resources :prebuilts
   resources :computer_cases
   get 'admin/list'

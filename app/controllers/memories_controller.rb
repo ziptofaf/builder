@@ -71,6 +71,7 @@ class MemoriesController < ApplicationController
       end
       entries = memory_params[:spreadsheet].split(/\n/)
       entries.each do |row|
+        row.gsub!(',','.')
         mem = Memory.new
         entry = row.split(/[\t;]/)
         mem.name = entry[0]

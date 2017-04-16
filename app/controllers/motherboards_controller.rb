@@ -48,6 +48,7 @@ class MotherboardsController < ApplicationController
     end
     entries = motherboard_params[:spreadsheet].split(/\n/)
     entries.each do |row|
+      row.gsub!(',','.')
       motherboard = Motherboard.new
       entry = row.split(/[\t;]/)
       motherboard.name = entry[0]

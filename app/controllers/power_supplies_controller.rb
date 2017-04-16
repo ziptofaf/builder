@@ -71,6 +71,7 @@ class PowerSuppliesController < ApplicationController
     end
     entries = power_supply_params[:spreadsheet].split(/\n/)
     entries.each do |row|
+      row.gsub!(',','.')
       psu = PowerSupply.new
       entry = row.split(/[\t;]/)
       psu.name = entry[0]
